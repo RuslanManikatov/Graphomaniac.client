@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CreateStoryComponent } from './create-story/create-story.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateStoryComponent
   ],
   imports: [
     BrowserModule,
