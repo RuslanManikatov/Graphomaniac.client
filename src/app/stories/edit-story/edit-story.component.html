@@ -1,30 +1,28 @@
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <form [formGroup]="createStoryForm" (ngSubmit)="createStory()">
+            <form [formGroup]="editStoryForm" (ngSubmit)="editStory()">
                 <div class="mb-2">
 
                     <label for="exampleInputEmail1" class="form-label">Title</label>
-                    <input type="text" class="form-control" formControlName="title">
+                    <input type="text" class="form-control" formControlName="title" [(ngModel)]="story.title">
                 </div>
                 <div class="alert alert-danger" *ngIf="title && title.invalid && title.touched">
                     This field is required!
                 </div>
                 <div class="mb-2" class="form-group textarea-border-focus">
                     <label for="exampleInputEmail1" class="form-label ">Story</label>
-                    <textarea class="form-control" formControlName="story" rows="5"
-                        placeholder="Копирай историята си тук!"></textarea>
+                    <textarea class="form-control" formControlName="fullStory" rows="5" [(ngModel)]="story.fullStory"></textarea>
                 </div>
-                <div class="alert alert-danger" *ngIf="story && story.invalid && story.touched">
+                <div class="alert alert-danger" *ngIf="fullStory && fullStory.invalid && fullStory.touched">
                     This field is required!
                 </div>
                 <div class="mb-2">
                     <label for="exampleInputPassword1" class="form-label">Image Url</label>
-                    <input type="password" class="form-control" formControlName="imageUrl">
+                    <input type="text" class="form-control" formControlName="imageUrl" [(ngModel)]="story.imageUrl">
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="createStoryForm.invalid">Submit</button>
+                <button type="submit" class="btn btn-primary" [disabled]="editStoryForm.invalid">Edit</button>
             </form>
         </div>
         <div class="col-lg-4"></div>

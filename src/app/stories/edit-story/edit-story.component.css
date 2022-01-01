@@ -1,0 +1,21 @@
+.row{
+    background-image: url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-color: #e9e4ca; /* Used if the image is unavailable */
+    height: 1000px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+form{
+    border: 10px solid rgb(15, 75, 67); 
+    padding: 5% 5%;
+    margin-top: 5%;
+    background-color: #cabba6;
+    font-weight: bold;
+}
+
+.textarea-border-focus .form-control:focus {
+    border: 1px solid #297b86;
+    box-shadow: 0 0 0 0.3rem rgba(68, 120, 179, 0.25);
+}

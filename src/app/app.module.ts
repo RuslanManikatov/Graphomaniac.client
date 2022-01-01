@@ -7,15 +7,27 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
-import { CreateStoryComponent } from './create-story/create-story.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CreateStoryComponent } from './stories/create-story/create-story.component';
+import { StoryService } from './services/story.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { ListStoriesComponent } from './stories/list-stories/list-stories.component';
+import { DatailsStoryComponent } from './stories/datails-story/datails-story.component';
+import { EditStoryComponent } from './stories/edit-story/edit-story.component';
+import { ErrorInterceptorService } from './services/error-interceptor.service';
+import { PublicPageComponent } from './public-page/public-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    CreateStoryComponent
+    CreateStoryComponent,
+    ListStoriesComponent,
+    DatailsStoryComponent,
+    EditStoryComponent,
+    PublicPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +35,21 @@ import { CreateStoryComponent } from './create-story/create-story.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService, 
+    StoryService, 
+    AuthGuardService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

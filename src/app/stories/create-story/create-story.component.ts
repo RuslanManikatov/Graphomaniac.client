@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { StoryService } from '../../services/story.service';
 
 @Component({
   selector: 'app-create-story',
@@ -8,28 +10,28 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreateStoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private storyService: StoryService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   createStoryForm = new FormGroup({
-    title: new FormControl('',[Validators.required]),
-    story:    new FormControl('',[Validators.required]),
-    imageUrl: new FormControl('',[Validators.required])
+    title:      new FormControl('',[Validators.required]),
+    fullStory:  new FormControl('',[Validators.required]),
+    imageUrl:   new FormControl('')
   })
 
   createStory(){
-    // this.authService.register(this.registerForm.value).subscribe(data =>{
-    //   console.log(data);
-    // });
+    this.storyService.createStory(this.createStoryForm.value).subscribe(data =>{
+      this.router.navigate(["stories"])
+    });
   }
   
   get title(){
     return this.createStoryForm.get('title');
   }
-  get story(){
-    return this.createStoryForm.get('story');
+  get fullStory(){
+    return this.createStoryForm.get('fullStory');
   }
   get imageUrl(){
     return this.createStoryForm.get('imageUrl');

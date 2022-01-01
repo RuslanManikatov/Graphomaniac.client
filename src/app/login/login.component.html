@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
@@ -24,4 +24,36 @@
         </div>
         <div class="col-lg-4"></div>
     </div>
+</div> -->
+
+
+
+
+<div class="login-box" [formGroup]="loginForm" (ngSubmit)="login()">
+  <h2>Login</h2>
+  <form>
+
+    <div class="user-box">
+      <input type="text"  formControlName="username">
+      <label > Username</label>
+    </div>
+    <div class="alert alert-danger" *ngIf="username && username.invalid && username.touched">
+      This field is required!
+    </div>
+
+    <div class="user-box">
+      <input type="password" formControlName="password">
+      <label for="exampleInputPassword1">Password</label>
+    </div>
+    <div class="alert alert-danger" *ngIf="password && password.invalid && password.touched">
+      This field is required!
+    </div>
+    <!-- <button  type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button> -->
+    <button class="submit_btn" [disabled]="loginForm.invalid">
+      <span></span>
+      <span></span>
+      Submit
+    </button>
+  </form>
+  <a>If you do not have an account yet... <a routerLink="/register">Sign Up</a></a>
 </div>
